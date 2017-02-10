@@ -1,0 +1,132 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath, amsthm, amssymb, hyperref}
+\usepackage{graphicx}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\newtheorem*{theorem}{Theorem}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+\renewcommand{\prime}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+%\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
+\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\N}[1]{N(#1)}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\sidele}{\mathbb{A}_K^{\times S}}
+\newcommand{\sadele}{\mathbb{A}_K^{S}}
+\newcommand{\idele}{\mathbb{A}_K^{\times}}
+\newcommand{\adele}{\mathbb{A}_K}
+
+\begin{document}
+
+\section{Grunwald-Wang Counterexamples}
+
+\subsection{For $\Q$} We show that $16$ is an $8$-th power in $\Q_v$ for
+$v \neq 2$. To start, we have
+\[ X^8 - 16 = (X^2 - 2 )(X^2 + 2)(X^2 - 2X + 2)(X^2 + 2X + 2). \]
+The roots of $X^2 \pm 2X + 2$ are $1 \pm \sqrt{-1}, -1 \pm \sqrt{-1}$,
+respectively. Thus, the splitting field of $X^8 - 16$ is
+$K := \Q(\sqrt{2}, \sqrt{-1})$. Hence for $p$ odd, we need to establish that one
+of $\sqrt{\pm 2}, \sqrt{-1}$ are in $K$. We do so by looking for integral
+solutions  to $X^8 - 16$, in order to apply Hensel's lemma. If $2, -1$ are not
+squares in $\mathbb{F}_p$, then multiplicativity of the Legendre symbol shows
+$-2$ is a square. If $2, -2$ aren't, then $-4$ is, and since $p$ is odd, this
+means $-1$ is. If $-1, -2$ aren't, then $2$ is. This means a modulo $p$ solution
+to $X^8 - 16$ is guaranteed, and since none of these solutions are zero, by
+Hensel's lemma there is a root to $X^8 - 16$ is $\Z_p$, for odd $p$.
+
+\subsection{For $\mathbb{Q}[\sqrt{7}]$} For $p$ an odd prime, the same use of
+Hensel's lemma above shows that
+$\Q_p[\sqrt{7}] = \Q_p[\sqrt{2}, \sqrt{-1}][\sqrt{7}].$ For $p = 2$,
+$\Q_2[\sqrt{7}] = \Q_2[\sqrt{2}]$. Let $\alpha = \sqrt{7}$. Then
+\begin{align*}
+  \alpha^2 - 2\alpha + 4 + 2\alpha - 4  - 8 & = -1 \\
+  \Rightarrow (\alpha -2)^2 + 2(\alpha - 2) - 7 & = 0
+\end{align*}
+Then $\alpha - 2 = -1 \pm 4\sqrt{2}$, so $(\alpha - 1)/4 = \pm \sqrt{2}$. Thus
+$X^8 - 16$ has a root in $\Q_2(\sqrt{7})$.
+
+\subsection{Relation to Grunwald-Wang} 
+
+
+\section{Norms are Local Norms}
+
+\subsection{Finite, Cyclic Extensions} Let $L/K$ be finite cyclic extensions of
+number fields. We will show $a \in N_{L/K} L$ if and only if it is in
+$N_{L_w/K_v} L_w$ for all places $w$ of $L$. This is true since we have the
+following maps
+\begin{align*}
+  K^\times / N_{L/K} L^\times \cong H^2(G(L/K), L^\times) & \xhookrightarrow{}
+H^2(G(L/K), \mathbb{A}^\times_L) \\
+  & \cong \bigoplus_v H^2(G(L_w/K_v), L_w^\times)
+  \cong\bigoplus_v K_v^\times /  N_{L_w/K_v} L_w^\times.
+\end{align*}
+
+\subsection{Counterexample for Non-cyclic Extensions} Let
+$L = \Q(\sqrt{13}, \sqrt{17})$. We show that $25$ is not a global norm but it
+is everywhere a local norm. Let
+$\alpha = a + b\sqrt{13} + c\sqrt{17} + d\sqrt{17 \cdot 13}$. Let
+$x = a + b\sqrt{13}, y = c + d\sqrt{13}$. Suppose $25 = N(\alpha)$. Then
+\begin{align*}
+  25 & = N_{\Q(\sqrt{13}/\Q}(N_{L/\Q(\sqrt{13})} \alpha) \\
+     & = N_{\Q(\sqrt{13})/\Q}(x^2 - 17y^2).
+\end{align*}
+
+\section{Hilbert Class Field}
+
+\subsection{Hilbert Class Field} Let
+$U = K^\times \prod_{v | \infty} K_v^\times \prod_{v \nmid \infty}
+\roi{K_v}^\times.$ We claim this is the subgroup of $C_K$ corresponding
+to the Hilbert class field. By the existence theorem, there is an $H/K$ such
+that $N_{H/K} C_H = U$. Then by Artin reciprocity,
+\[ C_K/U \xrightarrow{\sim} \mathrm{Gal}(H/K) .\]
+For $v$ an infinite place, looking at the local reciprocity map gives
+$K_v^\times/K_v^\times \xrightarrow{\sim} \mathrm{Gal}(H_w/K_v),$ so $v$ is
+split completely. For $v$ a finite place,
+\[\roi{K_v}^\times/\roi{K_v}^\times K^\times
+\subset K_v^\times/\roi{K_v}^\times K^\times\] is trivial, and so the local
+reciprocity map sends it to the identity element of $\mathrm{Gal}(H/K)$. Thus,
+$v$ is unramified.
+
+For the narrow Hilbert class field, for $v | \infty$ we take $(K_v^\times)^2$.
+Then the $\mathrm{Gal}(H_w/K_v)$, for $w | v$, have order two or one depending
+on if $K_v$ is real or complex.
+
+%Finally, we have
+%\[ C_K/U = \left(\prod_{v \nmid \infty} K_v^\times/\roi{K_v}^\times\right)
+%\left/K^\times.\]
+%Since $K_v^\times/\roi{K_v}^\times \cong \Z,$ and $K^\times$ is isomorphic to
+%the principal fractional ideals, this is isomorphic to the class group
+%$\mathrm{Cl}(K)$.
+
+\end{document}
+

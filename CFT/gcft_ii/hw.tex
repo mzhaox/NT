@@ -1,0 +1,252 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath, amsthm, amssymb, hyperref}
+\usepackage{graphicx}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\newtheorem*{theorem}{Theorem}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\prim}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+%\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
+\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\sidele}{\mathbb{A}_K^{\times S}}
+\newcommand{\sadele}{\mathbb{A}_K^{S}}
+\newcommand{\idele}{\mathbb{A}_K^{\times}}
+\newcommand{\adele}{\mathbb{A}_K}
+\newcommand{\Spl}{\mathrm{Spl}}
+\newcommand{\Fr}{\mathrm{Fr}}
+
+\begin{document}
+\section{Extensions Determined by Split Primes} Let $L/K$ be a finite extension
+of number fields, not necessarily Galois. Let $S$ be a finite (or density zero)
+set of primes of $K$. Let $\Spl_S(L/K)$ be primes $v \not\in S$ that split
+completely in $L$. Let $\Spl'_S(L/K)$ be the set of primes $v \not\in S$ such
+that $v$ has a split factor in $L$.
+\subsection{Dirichlet density} A place $w|v$ is split if and only if
+$\Fr_w = 1$. Thus
+\[\Spl_S(L/K) = \{ v | v \not\in S, \forall w, \Fr_w = 1 \in G(L/K) \}. \]
+By the Chebotarev density theorem, this set corresponds to the conjugacy class
+of the identity. Thus, its density is $1/[L:K]$.
+
+\subsection{Split Primes Determine Extension} Suppose for $L, M$ Galois
+extensions over $K$, we have the relation
+$\Spl_S(LM/K) = \Spl_S(L/K) \cap \Spl_S(M/K)$.
+Then if $L \subset M$, $LM = M$ and so
+$\Spl_S(M/K) = \Spl_S(L/K) \cap \Spl_S(M/K)$. Then
+$\Spl_S(M/K) \subset \Spl_S(L/K)$. If we start with this, we can conclude
+$\Spl_S(M/K) = \Spl_S(LM/K)$. Thus, in the extension $LM/M$, no new primes
+split. Since $L/K$ is Galois, $LM/M$ is a Galois extension. By the previous
+part, this cannot happen for a non-trivial extension since the set of
+completely split places has positive density. Thus,
+$LM = M$, or $L \subset M$.
+
+\subsubsection{Splitting in a Composite Field}  It remains to verify the
+relation. Due to transitivity of ramification indices and inertial degrees, it
+is clear that
+$\Spl_S(LM/K) \subset \Spl_S(L/K) \cap \Spl_S(M/K)$.
+Now take a place $v$ in the right hand side. Note that
+$L, M \otimes_K K_v \cong K_v^{[L:K], [M:K]}$
+respectively, due to the totally split condition. It is not hard to see that
+there is a surjective map of $K_v$-algebras
+\[ (L \otimes_K K_v) \otimes_{K_v} (M \otimes_K K_v) \rightarrow LM \otimes_K K_v, \]
+given by $(a \otimes b) \otimes (a' \otimes b') \rightarrow aa' \otimes bb'$.
+Since $LM \otimes_K K_v$ has a direct product decomposition, this surjective
+$K_v$-algebra homomorphism maps onto each $(LM)_w$, for $w | v$. 
+Since the left hand side is isomorphic to $K_v^{[L:K][M:K]}$, $(LM)_w$
+must also be isomorphic to $K_v^a$ for some $a$. The fact that this is a
+$K_v$-algebra isomorphism means $a = 1$. Thus, $v$ is a totally split place.
+
+\subsection{Polynomial Splitting} Let $L$
+be the splitting field of $f(x)$. Then $L/K$ is separable, and $L = K(\theta)$
+for some $\theta$. For $\prim \in \roi K$ not dividing the conductor of
+$\roi K[\theta]$ (this applies to all but finitely many $\prim$), by the
+theorem relating primes above $\prim$ to irreducible factors of $f \pmod \prim$,
+for the $\prim$ such that $f \pmod \prim$ splits, $\prim$ also splits
+completely. Thus, all but finitely $\prim$ split, so their density is 1. Hence
+$[L : K] = 1$.
+
+
+
+\section{Proof of Hasse-Minkowski Theorem}
+\begin{theorem}
+Let $K$ be a global field and $f$ a non-degenerate quadratic
+form in $n$ variables over $k$ which represents 0 in $k_v$ for each prime $v$ of
+$k$. Then $f$ represents 0 in $k$.
+\end{theorem}
+We use the following observations
+\begin{enumerate}
+\item any quadratic form can be brought into diagonal form,
+\item if a form represents 0, it represents any element of the field.
+\item $cX_1^2 - g(X_2, ..., X_n)$ represents 0 if and only if $g$ represents
+$c$.
+\end{enumerate}
+
+\subsection{$n = 1$} One-variable forms do not represent 0.
+\subsection{$n = 2$} We may bring any two variable form to the form
+$X^2 - bY^2$. We claim this represents 0 if and only if $b \in (K^\times)^2$.
+The if is clear. For the only if, note that if $Y = 0$, then $X = 0$, so we have
+a contradiction. Then $Y \neq 0$, and $b = (X/Y)^2$.
+
+Now we prove that $b$ is a square globally if and only if it is a square
+everywhere locally. The only work to be done is in the reverse direction.
+Suppose $L = K(\sqrt{b})$ is a non-trivial abelian extension. Then infinitely
+many primes do not split completely (result of Cassels'). At such places $v$,
+$L \otimes_k K_v \cong L_w$, where $w$ is the unique place extending $v$. Thus
+$L_v$ is quadratic, so $b$ is not a square of $K_v^\times$. This proves the
+$n = 2$ case.
+
+\subsection{$n = 3$} Bring $f$ to the diagonal form $X^2 - bY^2 - cZ^2$. We
+claim that $f$ represents 0 if and only if $c$ is a norm from $K(\sqrt{b})$.
+If this is the case, then $f$ represents 0 globally if and only if $c$ is a
+global norm if and only if $c$ is everywhere a local norm if and only if $f$
+represents 0 everywhere locally.
+
+Now suppose $c = x_0^2 - by_0^2$ is a norm. Then $(x_0, y_0, 1)$ is a solution
+to $f = 0$. On the other hand, if $Z = 0$, then $X^2 - bY^2 = 0$. This has a
+solution if and only if $b$ is a square. If $b$ is not, then $Z \neq 0$, and we
+can divide by $Z$, showing that $c$ is a norm.
+
+\subsection{$n = 4$} Bring $f$ to the form $X^2 - bY^2 - cZ^2 + acT^2$. By
+exercise 4.4, which is done in Cassels-Frohlich, this represents 0 if and only
+if $g = X^2 - bY^2 - cZ^2$ represents 0 over $K(\sqrt{ab})$. This reduces the
+$n = 4$ case to $n = 3$.
+
+\subsection{$n \geq 5$} Write $f = aX_1^2 + bX_2^2 - g(X_3, ..., X_n)$. Let
+$h = aX_1^2 + bX_2^2$. Then $f = h - g$ represents 0 over every $K_v$. So for
+each $v$, there is an $a_v$ that $h, g$ both represent.
+
+Exercise 4.5 guarantees that $g(X_3, X_4, X_5, 0, ..., 0)$ represents 0 in $K_v$
+for all but finitely many $v$. Call this collection of finitely many places
+$S$. For $v \in S$, suppose we can construct $(x_1, x_2) \in K \times K$ such
+that $c := h(x_1, x_2)$ and $c/a_v \in (K_v^\times)^2$. So $c = a_v \alpha_v^2$
+for some $\alpha_v$. Now consider the form $cY^2 - g$. $g$ represents $a_v$ and
+so does $cY^2$ (take $Y = 1/\alpha_v^2$). Thus, $g$ represents $c$. 
+
+For $v \not\in S$, we knew $g$ represents $c$. This shows $g$ represents $c$ for
+$v \in S$. Thus, by induction, $g$ represents $c$ globally. By construction,
+$h$ represents $c$ globally. Thus, $f = h - g$ represents 0. 
+
+To complete the proof, we give the construction of $c$. Since $a_v (K_v^\times)^2$ is
+open, and so $h^{-1}(a_v K_v^{\times 2}) \subset K_v \times K_v$ is open. By
+approximation, we can find $(x_1, x_2) \in K \times K$ that are in this open set
+for every $v \in S$. Let $c := h(x_1, x_2)$.
+
+\section{Representability by $x^2 + dy^2$}
+Let $d > 1$ be a square-free integer with $d \equiv 1 \pmod 4$. Let $p$ be a
+prime not dividing $2d$.
+
+\subsection{Representation of Primes over $\Z$} Let $K = \Q(\sqrt{-d})$.
+We show that
+$p = x^2 + dy^2$ if and only if $p$ splits completely in $H_K/\Q$, where $H_K$
+is the Hilbert class field of $K$. We start by showing that $p = x^2 + dy^2$ if
+and only if $p$ splits in $K/\Q$ into two principal primes. If
+$p = x^2 + dy^2 = (x + y\sqrt{-d})(x + y\sqrt{-d})$. These two factors will be
+different; otherwise, $p$ is ramified, and divides the discriminant of $K$
+which is $2d$, a contradiction. Now suppose $(p) = (\alpha) (\beta).$ The
+Galois actions permutes the prime ideals, so $(\beta) = (\overline{\alpha})$.
+Thus $p = u \alpha \overline{\alpha} = u N(\alpha)$. Then $u$ is rational, so
+$u = \pm 1,$ and positivity requires $u = 1$. Thus $p = N(\alpha)$. Finally,
+by the previous homework, a prime of $K$ splits completely in $H_K$ if and only 
+if they are principal.
+
+By Chebotarev, the density of primes splitting in $H_K/\Q$ is $1/[H_K : \Q]$.
+Since $[H_K : \Q] = [H_K : K][K : \Q] = 2|\mathrm{Gal}(H_K/K)| = 2h_K,$ by
+the previous global class field theory HW.
+
+\subsection{$d = 5$} If $p = x^2 + 5y^2$, then $p$ splits completely in
+$H_K/\Q$. By previous homework, we have $H_K = \Q(\sqrt{-5}, \sqrt{-1})$. Since
+$p$ splits, if we complete at any prime $\prim$ above $p$ we see that
+$(H_K)_\prim = \Q_p(\sqrt{-5}, \sqrt{-1}) = \Qp$, for instance by looking at
+$H_K \otimes \Qp$. This means $-5, -1$ are squares modulo $p$.
+
+Clearly, $p = 2$ cannot be represented.
+For $p \neq 2$, $-1$ being a square means $p \equiv 1 \pmod 4$. By using
+quadratic reciprocity, we can deduce $p \equiv 0, 1, 4 \pmod 5$. By CRT,
+this means $p = 5$, $p \equiv 1 \pmod{20}$, or $p \equiv 9 \pmod{20}$.
+
+
+
+\subsection{Representability of Primes over $\Q$} We show $p = x^2 + dy^2$,
+$x, y \in \Q$ if and only if the following conditions hold.
+
+\begin{enumerate}
+  \item $p \in N_{\Q_2(\sqrt{-d})/\Q_2}\Z_2[\sqrt{-d}]^\times$,
+  \item $p \in (\Z_l^\times)^2$ for all primes $l | d$,
+  \item $p$ splits in $\Q(\sqrt{-d})/\Q$.
+\end{enumerate}
+
+Begin with the forward direction. Since $p$ is a norm, it is everywhere a local
+norm, particularly at $2$. Since $p \neq 2$, the valuation of $v(p)$ in this
+case is $0$. Moreover, if $v(x) \neq v(y)$, then $v(x), v(y) \geq 0$, so
+$x, y$ are integral. If $v(x) = v(y)$, then it must be that
+$v(x) = v(y) = 0$, so $x,y$ are again integral.
+
+For (2), notice again that $p$ is a local norm at $l|d$. If $v$ is the
+valuation for $\Q_l$, then $v(p) = 0$. Just as before, we can conclude that if
+$v(x^2) \neq v(dy^2)$, then $v(x^2), v(dy^2) \geq 0$. Otherwise, they are both
+equal to 0. This allows us to reduce modulo $l$, obtaining
+$x^2 \equiv p \pmod l$. Since $p \neq 0 \pmod l$, we can lift this to a solution
+in $\Z_l$ via Hensel's lemma.
+
+Finally, suppose $p = (a'/e')^2 + d(b'/f')^2$, for $a', b', e', f' \in \Z$. If
+$c = [e', f']$, we can write $c^2 p = a^2 + d b^2$ for $a, b, c \in \Z$.
+Moreover, $c$, which is the least common multiple of the denominators,
+is the smallest integer that clears  denominators. This allows us to claim that 
+$p$ does not divide $b$.  Otherwise, $p | a, b, c$, and we can obtain a smaller 
+such $c$. Then modulo $p$, $-d \equiv (a/b)^2 \pmod p$, so $x^2 + d$ splits
+modulo $p$, so $p$ splits.
+
+To prove the reverse direction, we will use (1)-(3) to show that these imply
+that $p$ is everywhere a local norm. Clearly, (1) and (2) imply $p$ is a local
+norm at $2$ and all $l$ dividing $d$. Since $p$ splits in $\Q(\sqrt{-d})$,
+completing at a prime above $p$ yields $\Q_p(\sqrt{-d}) = \Q_p$, so $p$ is a
+norm above $p$. Now take $l \nmid 2dp$. Then $\Q_l(\sqrt{-d})/\Q_l$ is
+unramified, and the norm map is surjective on units, so $p$ is a norm over $l$.
+Thus, $p$ is a global norm.
+
+\subsection{Local Norms Imply Splitting} Suppose (1) and (2) hold, we will show
+that (3) holds. From $(1)$, we obtain $p = a^2 + db^2$ for $a, b \in \Z_2$.
+Reducing modulo 4 gives us $p \equiv a^2 + b^2 \equiv 1 \pmod 4$, so $-1$
+is a square modulo $p$. If $d = l_1, ..., l_r,$ we have that
+\[ \left(\dfrac{-d}{p}\right) = \prod_i \left(\dfrac{l_i}{p}\right), \]
+where we have used the fact that $-1$ is a square modulo $p$. Finally, (2)
+and quadratic reciprocity, along with the fact that $p \equiv 1 \pmod 4$,
+shows that all these Legendre symbols are $1$. Thus,
+\[ \left(\dfrac{-d}{p}\right) = 1, \] implying (3).
+
+
+
+\end{document}
+

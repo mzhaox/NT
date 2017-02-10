@@ -1,0 +1,86 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath, amsthm, amssymb, hyperref}
+\usepackage{graphicx}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{mathtools}
+
+\newtheorem*{theorem}{Theorem}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+\renewcommand{\prime}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+%\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
+\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\N}[1]{N(#1)}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\sidele}{\mathbb{A}_K^{\times S}}
+\newcommand{\sadele}{\mathbb{A}_K^{S}}
+\newcommand{\idele}{\mathbb{A}_K^{\times}}
+\newcommand{\adele}{\mathbb{A}_K}
+
+\begin{document}
+\section{Weak Approximation Refinement}
+Let $S$ be a finite set of places of $K$, and let $\alpha_v \in K_v, v \in S$ be given. By the weak approximation theorem, for any $\epsilon > 0$, there is an $\alpha \in K$ with $|\alpha - \alpha_v| < \epsilon$. Let $\mathfrak{p}_v$ be the prime associated to the place $v$. This condition can be written as $\alpha \equiv \alpha_v \pmod{\mathfrak{p}_v^N}$ for some $N$ sufficiently large for every $v$. Let $T$ be the places away from $S$ for which $\alpha$ is not integral.
+
+By the Chinese Remainder Theorem, and since $T$ is finite, there is a $\beta$ with $\beta \equiv 1 \pmod{\mathfrak{p}_v^N}$ for $v \in S$, and $\beta \equiv 0 \pmod{\mathfrak{p}_v^{v_{\mathfrak{p}}(\alpha)}}$ for $v \in T$. Then $\alpha \beta$ satisfies $\alpha \beta \equiv \alpha_v \pmod{\mathfrak{p}_v^N}$ and $v_{\mathfrak{p}_v}(\alpha \beta) \leq 1$.
+
+\section{Idelic Topology}
+\subsection{Subspace Topology from a Product of Locally Compact Fields} Label the places of $K$ by natural numbers larger than 0, i.e. let $v_1, ..., $ be the places of $K$. Then let $a_n = (\alpha_{v_i})_{v_i}$ where $\alpha_{v_i} = p_i$, a uniformizer of $K_{v_i}$, if $i = n,$ and $1$ otherwise. This sequence converges in the product topology, but not in the idelic topology, since the $a_n$ never enter the neighborhood $\prod \mathcal{O}_v^\times$, a neighborhood of $1$. 
+
+\subsection{Subspace Topology from the Adeles} Choose the same sequence as before. It doesn't converge in the idelic topology, but consider the neighborhood basis at $1$ in the adeles (parameterized by $S$ and sets of integers $\{ n_v | v \in S \})$: $U_{S, n_v} = \prod_{v \in S} (1 + \mathfrak{p}_v^{n_v} \mathcal{O}_v) \prod_{v \not\in S} \mathcal{O}_v$. Then for $n > \max_{v \in S} n_v$, $a_n \in U_{S, n_v}$ 
+
+\subsection{Colimit Topology} Let $U$ be an open set of $\idele$. Then $U = \prod_{v \in S} U_v \prod \mathcal{O}_v^\times$, for some $S$ and $U_v \subset K_v^\times$ an open subset. Then $U \cap \sidele = U$, which is a basic open set in the topology on $\sidele$ (the product topology). For $S_1 \neq S$, we can see that \[U \cap \mathbb{A}_K^{S_1} = \prod_{v \in S \cap S_1} U_v \prod_{v \in S \setminus S_1} U_v \cap \mathcal{O}_v^\times \prod_{v \in S_1 \setminus S} K_v^\times \prod_{v \not\in S \cup S_1} \mathcal{O}_v^\times,\] which again has the form of an open set of $\mathbb{A}_K^{S_1}$. I didn't make much progress in showing that an open set of $\bigcup_S \sidele$ (with colimit topology) is of the form of a restricted direct product open set. I thought that by judiciously picking $S$'s for the intersections $U \cap \sidele$, you could determine what $U$ had to look like.
+
+\subsection{Topology via Embedding}
+
+\section{Minkowski Bounds}
+\subsubsection{Computing some Class Groups} First, we deal with $K = \rats(\sqrt{-5}).$ By the Minkowski bound, every ideal class has a representative $I$ satisfying $N(I) \leq 2.847...$ Then since $x^2 + 5$ factors $\pmod 2$ as $(x - 1)^2$, and since $\mathcal{O}_k = \mathbb{Z}[\sqrt{-5}],$ we can write $(2) = \mathfrak{P}^2$ where $\mathfrak{P} = (2, -1 + \sqrt{-5})$. Since we have no solutions to $a^2 + 6b^2 = 2$, $\mathfrak{P}$ cannot be principal. However, it has order $2$, so $\cl K \cong \Zmod 2.$
+
+Next, we deal with $K = \rats(\sqrt{-31}).$ The Minkowski bound tells us every ideal class has a representative $I$ with $N(I) \leq 3.545...$. 
+
+\section{Dull version of the Hilbert Class Field} Take an ideal $I \subset K$ (possibly fractional). We show there is an extension $L/K$ that makes this a principal ideal. Letting $h_K$ be the order of the class group, notice that $I^{h_K} = a \roi K$ is principal. Then let $\alpha = a^{1/h_K}$, and form $L = K(\alpha)$. So far, we know that $I^{h_K} (\alpha)^{-h_K} = \mathcal{O}_L$. Hence $\mathcal{O}_L \subset I (\alpha)^{-1}$. On the other hand, we have $(I \alpha^{-1})^{h_K} = \mathcal{O}_L$, so $I \alpha^{-1} \subset \mathcal{O}_L.$ Hence $I = \alpha \mathcal{O}_L$.
+
+Since the class group is finite, we can take representatives from each ideal class and apply the process above to make those representatives into principal ideals. If we take another ideal $J = I u$ for $u \in K^\times$ in the same ideal class, notice that $J \mathcal{O}_L = u I \mathcal{O}_L = u \alpha \mathcal{O}_L$, so we do not need to adjoin more elements to make $J$ principal. Hence finitely many suffice, and so a finite extension can be found so that the ideals of $K$ become principal in $L$.
+
+\section{Complex Multiplication}
+\subsection{CM Fields Are Totally Imaginary Fields with Complex Conjugation} For a field $L$ on which complex conjugation is defined, complex conjugation is an element of the Galois group over $\rats$ and has order $2$. The subgroup generated by it corresponds to a field $K$ with $[L : K] = 2$. Since $K$ is fixed by complex conjugation, it must be totally real.
+
+On the other hand, let $K$ be a totally real field, let $L$ be a totally imaginary quadratic extension of $K$, so that $L$ is a CM field. Then we can write $L \cong K[x]/(f(x))$ for some quadratic polynomial $f(x)$. This has roots of the form $a + b\sqrt{d}$ for $d < 0$, and we can write $L = K(a + b \sqrt{d}) = K(\sqrt{d}).$ Hence complex conjugation induces the automorphism on $L$ sending $\sqrt{d} \rightarrow -\sqrt{d}.$ If we had chosen the other root, the automorphism would still act the same way.
+
+\subsection{Non-CM Field and Not Totally Real Field} Take $L = \mathbb{Q}[x]/(x^3 - 2)$. This cannot be a CM field due to divisibility of degrees but it is also not a totally real field, since one can embed it into $\mathbb{C}$ by sending $x \rightarrow \omega \sqrt[3]{2}.$
+
+\subsection{Units of a CM Field} Guided by the hint, consider the map $\epsilon \rightarrow \epsilon/\bar{\epsilon}.$ This is a homomorphism $\roi K^\times \rightarrow \mu_\infty(K),$ and it sends $\mu_\infty(K) \roi F^\times \rightarrow \mu_\infty(K)^2,$ hence inducing $\roi K^\times/\mu_\infty(K)\roi F^\times \rightarrow \mu_\infty(K)/\mu_\infty(K)^2.$
+
+\section{Dirichlet Unit Theorem}
+\subsection{Gershgorin Circle Theorem} We prove that such a matrix has positive eigenvalues when it satisfies the condition that the sum of the rows is larger than $0$ (as opposed to the columns). Then because a matrix and its transpose have the same rank, one non-zero determinant implies the other determinant is non-zero.
+
+Let $A = (a_{ij})$ and let $\lambda, v$ be an eigenvalue and eigenvector respectively. Then take $i$ to be the index such that $|v_i| \geq |v_a|$ for any other $a = 1, ..., n$. Then we from $Av = \lambda v$, we have $\lambda v_i = \sum_j a_{ij} v_i \Rightarrow (\lambda - a_{ii}) v_i = \sum_{j \neq i} a_{ij} v_i$. Now applying norms, divide by $|v_i|$, using triangle inequality to conclude that $|\lambda - a_{ii}| < \sum_{j \neq i} |a_{ij}|.$ So any eigenvalue is bounded below by $a_{ii} - \sum_{j \neq i} |a_{ij}| = \sum_j a_{ij} > 0.$ Hence the determinant is non-zero (positive, in fact).
+
+\end{document}

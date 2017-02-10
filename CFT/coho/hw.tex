@@ -1,0 +1,114 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath, amsthm, amssymb, hyperref}
+\usepackage{graphicx}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\newtheorem*{theorem}{Theorem}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+%\renewcommand{\prime}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+%\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
+\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\sidele}{\mathbb{A}_K^{\times S}}
+\newcommand{\sadele}{\mathbb{A}_K^{S}}
+\newcommand{\idele}{\mathbb{A}_K^{\times}}
+\newcommand{\adele}{\mathbb{A}_K}
+
+\begin{document}
+\begin{enumerate}[label=\textbf{(\arabic*)},wide, labelwidth=!, labelindent=0pt]
+\item (Cohomology of pro-cyclic groups) Let $G = \widehat{\Z}$, and let $F$ be a topological generator of
+$G$. Show that for any torsion $G$-module, $H^1(G, M) \cong M/(F - 1)M$. Show that $H^i(G, M) = 0$ for $i \geq 2$.
+\newline\\
+\textbf{Solution.} We have \begin{align*}
+H^1(G, M) = \varinjlim_{n \in \N} H^1(\widehat{\Z}/n\widehat{\Z}, M^{n\widehat\Z}) \\
+\end{align*}
+We can now use the description of $H^1$ as the crossed homomorphisms modulo the principal crossed homomorphisms. A crossed homomorphism $\varphi : \widehat\Z/n\widehat\Z \rightarrow G$ is determined by its value on a generator $\sigma_n \in \widehat\Z/n\widehat\Z$ (which we can take as the projection of the generator $F$). Moreover, its value on a general element can be described as \begin{align*}
+\varphi(a \sigma_n) & = \varphi(\sigma_n + (a - 1)\sigma_n) \\
+& = \sigma_n \cdot \varphi((a - 1) \sigma_n) + \varphi(\sigma_n) \\
+& \vdots \\
+& = (\sigma_n^{a - 1} + \cdots + \sigma_n + \mathrm{id}_{\Zn}) \varphi(\sigma_n).
+\end{align*} Since $n \sigma_n = \mathrm{id}_{\widehat\Z/n\widehat\Z}$, the
+other requirement for an $m \in M^{n \widehat\Z}$ to be the image of $\sigma_n$
+is that $m$ should be killed by the action of $N_n := \mathrm{id}_
+{\widehat\Z/n\widehat\Z} + \sigma_n + \cdots + \sigma_n^{n - 1}$. If we let
+$\prescript{}{N}{A}$ denote the elements of $A$ annhilated by $N$, then we have
+that the crossed homomorphisms are isomorphic to $\prescript{}{N_n}{M^{n
+\widehat\Z}}.$ On the other hand, it is clear that the principal crossed
+homomorphisms is isomorphic to $\prescript{}{N_n}{(\sigma_n - 1){M^{n
+\widehat\Z}}}.$ This gives us \[ H^1(\widehat\Z/n\widehat\Z, M^{n \widehat\Z})
+\cong \prescript{}{N_n}{M}^{n \widehat\Z}/(\sigma_n - 1)M^{n \widehat\Z}.\]
+%Since $M$ is torsion, the direct limit of these groups is $M/(F - 1)M$.
+The direct limit commutes with quotient, and since $M$ is torsion,
+$M = \varinjlim \ _{N_n} M^{n \widehat\Z}$. Finally, we should use some fact
+about the isomorphism \[\widehat\Z/n\widehat\Z \iso \Z/n\Z.\]
+
+\item Let $G$ be a profinite group, $M$ a finite $G$-module. Consider extensions \[ 1 \rightarrow M \rightarrow E \xrightarrow{\pi} G \rightarrow 1,\] where $M$ is a normal subgroup of $E$. The $G$-action on $E$ is given by lifting $g \in G$ to $E$ and allowing it to act on $M$ by conjugation. Let $\mathrm{Ext}(G, M)$ be the set of equivalence classes of $E$ where $E \simeq E'$ if there is an isomorphism $E \rightarrow E'$ indicuing the identity on $M$ and $G$.
+\begin{enumerate}[label=\textbf{\alph*.}, wide, labelwidth=!, labelindent=20pt]
+\item Show that there is a natural isomorphism $\mathrm{Ext}(G, M) \cong H^2(G, M).$
+\newline \\
+\noindent\textbf{Solution.} Given $\varphi \in Z^2(G, M)$, construct $E \in \mathrm{Ext}(G, M)$ by letting $E = M \times G$ as a set, and give it a group law $(m, g) \cdot (m', g') = (m + g(m') + \varphi(g, g'), gg').$ For an identity element to exist, we must have $g' = \mathrm{id}_G$ and $g(m') + \varphi(g, \mathrm{id}_G) = 0$. One can take $m' = 0$, as we claim that there is a $\varphi'$ in the same cohomology class of $\varphi$ such that $\varphi'(g, \mathrm{id}_G) = 0$. From the condition \[ g \varphi(g', g'') + \varphi(g, g'g'') = \varphi(g, g') + \varphi(g g', g''),\] by setting $g' = g'' = \mathrm{id}_G$, we have \[ g \varphi(\mathrm{id}_G, \mathrm{id}_G) = \varphi(g, \mathrm{id}_G).\] Let $\phi(g) = \varphi(\mathrm{id}_G, \mathrm{id}_G).$ Then $d^1\phi$ is a coboundary satisfying \[ d^1\phi(g, g') = g \phi(g') - \phi(g g') + \phi(g).\] Notice that for $\varphi' := \varphi - d^1\phi$, we have \[\varphi'(g, \mathrm{id}_G) = \varphi(g, \mathrm{id}_G) - d^1\phi(g, \mathrm{id}_G) = g \varphi(\mathrm{id}_G, \mathrm{id}_G) - g \varphi(\mathrm{id}_G, \mathrm{id}_G) - \phi(g) + \varphi(g) = 0.\] From this, we also see that $(0, \mathrm{id}_G) \in E$ is an identity element.
+
+Finally, by writing out an equation for associativity of the product of $(m, g), (m', g'), (m'', g'')$, we can see that we need to have \[ g \varphi(g', g'') + \varphi(g, g' g'') = \varphi(g, g') + \varphi(g g', g'').\] This is exactly the condition that $d\varphi(g, g', g'') = 0.$
+
+On the other hand, given an extension $E$, fix a section $s: G \rightarrow E$. Write the group operation of $E, G$ additively and multiplicatively, respectively. We have the action of $G$ on $M$ is $\sigma m = s(\sigma) + m - s(\sigma)$, or $\sigma m + s(\sigma) = s(\sigma) + m$. Give $\sigma, \sigma'$, notice that $s(\sigma) + s(\sigma')$ and $s(\sigma \sigma')$ are sent to the same element $\sigma \sigma'$ by $\pi$. Hence they differ by an element $\varphi(\sigma, \sigma') \in M$, i.e. \[ s(\sigma) + s(\sigma') = \varphi(\sigma, \sigma') + s(\sigma \sigma').\] Given $\sigma, \sigma', \sigma''$, by the associativity of $s(\sigma) + s(\sigma') + s(\sigma'')$, we can deduce (replacing sums of the form $s(a) + s(b)$ by $\varphi(a, b) + s(ab)$, and using the commutation rule $\sigma \cdot m + s(\sigma) = s(\sigma) + m$) \[ \varphi(\sigma, \sigma') + \varphi(\sigma \sigma', \sigma'') = \sigma \varphi(\sigma', \sigma'') + \varphi(\sigma, \sigma' \sigma'').\] This is precisely the condition that $d\varphi(\sigma, \sigma', \sigma'') = 0.$ 
+
+Moreover, for another section $s'$, repeat the above process to obtain a $\varphi' : G^2 \rightarrow M$. Let $s'' = s' - s$. Note that $\pi \circ s'' = 0$, so any $s''(\sigma) \in M$. Then \begin{align*}
+s'(\sigma) + s'(\sigma') & = \varphi'(\sigma, \sigma') + s''(\sigma \sigma') + s(\sigma \sigma') \\
+& = \varphi'(\sigma, \sigma') + s''(\sigma \sigma') - \varphi(\sigma, \sigma') + s(\sigma) + s(\sigma') \\
+&= \varphi'(\sigma, \sigma') + s''(\sigma \sigma') - \varphi(\sigma, \sigma') - s''(\sigma) + s'(\sigma) - s''(\sigma') + s'(\sigma')\\
+&= \varphi'(\sigma, \sigma') + s''(\sigma \sigma') - \varphi(\sigma, \sigma') - s''(\sigma) - \sigma s''(\sigma') + s'(\sigma') + s'(\sigma') \\
+& = \varphi'(\sigma, \sigma') - \varphi(\sigma, \sigma') + s''(\sigma \sigma') - s''(\sigma) - \sigma s''(\sigma') + s'(\sigma') + s'(\sigma').
+\end{align*}
+Hence $\varphi' - \varphi = s''(\sigma) - s''(\sigma \sigma') + \sigma s''(\sigma') = d^1s''(\sigma, \sigma'')$. Hence $\varphi, \varphi'$ are in the same cohomology class.
+\item Verify that the trivial element of $H^2(G, M)$ corresponds to the semi-direct product.
+\newline \\
+\noindent\textbf{Solution}. Identify $M$ with $M \times \mathrm{id}_G$ and identify $G$ with $0 \times G$. Then it's clear their intersection only consists of the identity element $(0, \mathrm{id}_G)$. Moreover, we have \[ (m, \mathrm{id}_G) \cdot (0, g) = (m + \mathrm{id}_G(0) + \varphi(\mathrm{id}_G, g), g) = (m, g).\]
+Hence the trivial element of $H^2(G, M)$ gives the semi-direct product.
+
+\item Suppose we have $E \leftrightarrow \phi_E$. If $f: H \rightarrow G$ is a profinite group homomorphism, show that $f$ lifts to $E$ if and only if $f^*(\phi_E) = 0.$
+\newline \\
+\noindent\textbf{Solution}. Since $M$ is a $G$-module, and $f: H \rightarrow G$, we can define the action of $H$ on $M$ to be $h \cdot m := f(h) \cdot m.$ Then of course $f : H \rightarrow G$ and $M \rightarrow M$ (sending $M$ as a $G$-module to $M$ as an $H$-module) forms a compatible pair of homomorphisms.
+
+If $f$ lifts to $\tilde{f} : H \rightarrow E$, then $\tilde{f}(h) + \tilde{f}(h') = \phi(h, h') + \tilde{f}(hh')$ for some $\phi$. If we take a particular lift $\tilde{f} = s \circ f$, then 
+\end{enumerate}
+\item Compute $H^2(\Zp, \Zp), H^2(\Zp \times \Zp, \Zp),$ and groups of order $p^3$.
+\newline \\
+\noindent\textbf{Solution}. Regarding $\Zp$ as a $\Zp$-module means we have a map $\Zp \xrightarrow{\varphi} \mathrm{Aut}(\Zp).$ Since $|\mathrm{Aut}(\Zp)|$ has order $p - 1$, and since $p = |\mathrm{im} \varphi| | \ker \varphi |$, $\varphi$ must be the zero map, so that $\Zp$ is a trivial $\Zp$-module.
+
+A homogenous $2$-cochain $\varphi \in \widehat{Z}^2(\Zp, \Zp)$ is determined by its values on $(1, 0)$ and $(0, 1)$, which as we have computed earlier (at least in the case of inhomogenous cochains...) 
+\newline\\
+%\item Let $\mathcal{A}$ be an abelian category. For $M$ an object of $\mathcal{A}$, $\mathrm{Hom}(M, -)$ is left-exact. $\mathcal{A}$ having enough injectives allows us to define the derived functors $\mathrm{Ext}^i(M, -)$. Ditto for $\mathrm{Hom}(-, N).$ Prove that these functors agree.
+\end{enumerate}
+\end{document}
