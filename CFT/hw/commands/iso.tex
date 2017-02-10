@@ -1,0 +1,43 @@
+% Regular-sized isomorphism.
+\newcommand{\iso}{\simeq}
+
+% Experimental big isomorphism commands.
+
+% Bigger isomorphism (with arrow).
+\newcommand{\longiso}{\stackrel{\sim}{\longrightarrow}}
+
+% Very big isomorphism (no arrow).
+\makeatletter
+\newcommand*{\isomorphism}{%
+  \mathrel{%
+    \mathpalette\@isomorphism{}%
+  }%
+}
+\newcommand*{\@isomorphism}[2]{%
+  % Calculate the amount of moving \sim up as in \simeq
+  \sbox0{$#1\simeq$}%
+  \sbox2{$#1\sim$}%
+  \dimen@=\ht0 %
+  \advance\dimen@ by -\ht2 %
+  %
+  % Compose the two symbols
+  \sbox0{%
+    \lower1.9\dimen@\hbox{%
+      $\m@th#1\relbar\isomorphism@joinrel\relbar$%
+    }%
+  }%
+  \rlap{%
+    \hbox to \wd0{%
+      \hfill\raise\dimen@\hbox{$\m@th#1\sim$}\hfill
+    }%
+  }%
+  \copy0 %
+}
+\newcommand*{\isomorphism@joinrel}{%
+  \mathrel{%
+    \mkern-3.4mu %
+    \mkern-1mu %
+    \nonscript\mkern1mu %
+  }%
+}
+\makeatother
