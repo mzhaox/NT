@@ -1,10 +1,479 @@
-\input{preamble}
+\documentclass[11pt,answers,addpoints,reqno]{exam}
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, amscd}
+%\usepackage{manfnt}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage[all]{xy}
+   \SelectTips{cm}{10}
+\usepackage{txfonts}
+\usepackage{enumitem}
+%\setcounter{tocdepth}{1}
+
+%\renewcommand{\questionlabel}{\thequestion.}
+
+%this next just to get sha
+\DeclareFontFamily{U}{wncy}{}
+    \DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
+    \DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
+    \DeclareMathSymbol{\Sh}{\mathord}{mcy}{"58}
+%end of sha
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{hypothesis}[thm]{Hypothesis}
+\newtheorem{prop-conj}[thm]{Proposition-Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{assumption}[thm]{Assumption}
+
+\theoremstyle{definition}
+\newtheorem{forschung}[thm]{Research Problem}
+
+\theoremstyle{remark}
+\newtheorem{notation}[thm]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{question}[thm]{Question}
+
+\theoremstyle{remark}
+\newtheorem{eg}[thm]{Example}
+
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qb}{\overline{\mathbb{Q}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\Ql}{\mathbb{Q}_{\ell}}
+\newcommand{\Qlb}{\overline{\mathbb{Q}}_\ell}
+\newcommand{\Qpb}{\overline{\mathbb{Q}}_p}
+\newcommand{\af}{\mathbf{A}_F}
+\newcommand{\fl}{\mathbb{F}_{\ell}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bbP}{\mathbb{P}}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Fl}{Fl}
+\DeclareMathOperator{\GR}{GR}
+\DeclareMathOperator{\Sat}{Sat}
+\DeclareMathOperator{\IC}{IC}
+\DeclareMathOperator{\Loc}{Loc}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\Hk}{Hk}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\IH}{IH}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Prim}{Prim}
+\DeclareMathOperator{\Spl}{Spl}
+
+\newcommand{\gal}[1]{\Gamma_{#1}} % an absolute Galois group
+\newcommand{\Gal}{\mathrm{Gal}} % a relative Galois group
+\newcommand{\Bdr}{\mathrm{B}_{dR}}
+\newcommand{\Bcris}{\mathrm{B}_{cris}}
+\newcommand{\Ddr}{\mathrm{D}_{dR}}
+\newcommand{\Dcris}{\mathrm{D}_{cris}}
+
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+
+\newcommand{\mc}{\mathcal}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\mr}{\mathrm}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mbb}{\mathbb}
+
+\newcommand{\rl}{\rho_{\ell}}
+
+\newcommand{\tG}{\widetilde{G}}
+\newcommand{\tT}{\widetilde{T}}
+\newcommand{\tZ}{\widetilde{Z}}
+\newcommand{\tB}{\widetilde{B}}
+\newcommand{\tH}{\widetilde{H}}
+\newcommand{\tpi}{\tilde{\pi}}
+\newcommand{\tomega}{\tilde{\omega}}
+\newcommand{\tmu}{\tilde{\mu}}
+\newcommand{\tnu}{\tilde{\nu}}
+\newcommand{\tM}{\widetilde{M}}
+\newcommand{\Bb}{\mathbf{B}}
+\newcommand{\ppone}{\mathbb{P}^1-\{0, 1, \infty\}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Gpd}{\mathrm{Groupoids}}
+
+\newcommand{\br}{\bar{\rho}} %to sync with lifting symplectic
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fn}{\mathfrak{n}}
+\DeclareMathOperator{\Lift}{\mathrm{Lift}}
+\DeclareMathOperator{\Def}{\mathrm{Def}}
+\newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\CO}{\mathcal{C}_{\mathcal{O}}}
+\newcommand{\fr}{\mathrm{fr}}
+\newcommand{\Fr}{\mathrm{Fr}}
+\newcommand{\kbar}{\overline{\kappa}}
+\newcommand{\Ram}{\mathrm{Ram}}
+\newcommand{\unr}{\mathrm{unr}}
+\newcommand{\brgm}{\bar{\rho}(\mathfrak{g}_{\mu})}
+\newcommand{\St}{\mathrm{St}}
+\newcommand{\tv}{\tilde{v}}
+\newcommand{\brgd}{\bar{\rho}(\mathfrak{g}^\vee)}
+\newcommand{\tF}{\widetilde{F}}
+\newcommand{\LG}{{}^L G}
+\newcommand{\der}{\mathrm{der}}
+\newcommand{\DM}{\mathrm{DM}}
+\newcommand{\Rp}{R^{\acute{e}t}_p}
+\newcommand{\adele}{\mathbb{A}}
+\newcommand{\idele}{\mathbb{A}^\times}
+
+\newcommand{\mar}[1]{\marginpar{\tiny #1}}
 
 \begin{document}
+\begin{center}
+\bf{Problems for Math 6370, Fall 2016}
+\end{center}
+As always, if a problem or hint is incorrectly stated, the problem becomes to formulate it correctly, and then solve the corrected version.
+\section{Basics of local fields}
 
-Empty document.
+\begin{questions}
+\question For what primes $p$ does $x^2-7$ have a root in $\Q_p$?
+\question Let $A$ be a Dedekind domain with fraction field $K$, and let $B$ be
+the integral closure of $A$ in a finite separable extension $L/K$. Recall that (for any finite separable extension of fields) the trace form $\tr \colon L \times L \to K$ is non-degenerate. In our setting, integrality properties of this duality are one way to measure ramification of the extension. We define the \textit{inverse different} by
+\[
+\mc{D}^{-1}_{B/A}= \left\{ \alpha \in L: \tr(\alpha B) \subset A \right\}. 
+\]
+Check that this is a fractional ideal of $L$ containing $B$. The \textit{different} $\mc{D}_{B/A}$ (often written as $\mc{D}_{L/K}$) is then defined to be its inverse, which is therefore an integral ideal of $B$.
+\begin{parts}
+\part Show that if $B=A[\beta]$, then $\mc{D}_{B/A}= (f'(\beta))$ where $f(X)
+\in A[X]$ is the minimal polynomial of $\beta$. (Hint: let $\beta_1, \ldots, \beta_n$ be the conjugates of $\beta$ in $\overline{L}$. Show that
+\[
+\frac{1}{f(X)}= \sum_{k=1}^n \frac{1}{f'(\beta_k)(X-\beta_k)}= \sum_{i=1}^{\infty} X^{-i} \tr_{L/K}( \frac{\beta^{i-1}}{f'(\beta)}).
+\]
+Deduce that $\tr_{L/K}(\frac{\beta^{i-1}}{f'(\beta)})$ is zero for $i=1, \ldots, n-1$, is 1 for $i=n$, and is integral for all $i$. Conclude that $\left\{ \frac{\beta^i}{f'(\beta)} \right\}_{i=0, \ldots, n-1}$ is an $\mc{O}_K$-basis of $\mc{D}_{L/K}^{-1}$.)
+\part Show that $\mc{D}_{L/K}= \prod_w \mc{D}_{L_w/K_v}$, where the product is
+taken over the (equivalence classes) of discrete valuations (or, if you prefer, prime ideals) $w$ of $L$.
+\part In light of the previous part, we turn to a purely local analysis. Let
+$L/K$ be a finite Galois extension of local fields, with rings of integers $\mc{O}_L$ and $\mc{O}_K$. Assume the extension of residue fields is separable. Let $v_L$ be the \textit{normalized} valuation on $L$ (that is, $v_L \colon L \onto \Z \cup \infty$). Recall the lower ramification groups $G(L/K)_i$. Show that
+\[
+v_L(\mc{D}_{L/K})= \sum_{i=1}^{\infty}\left( \# G(L/K)_i -1 \right).
+\]
+(Hint: we showed in class that the hypothesis of part (a) always applies.) In particular, $\mc{D}_{L/K}= \mc{O}_L$ if and only if $L/K$ is unramified.
+\end{parts}
 
-\bibliographystyle{amsplain}
-\bibliography{refs}
+\question Let $\zeta$ be a primitive $p^n$ root of unity, and let $K= \Q_p
+(\zeta)$. Recall that the mod $p^n$ cyclotomic character gives an injection $\kappa \colon G(K/\Q_p) \to (\Z/p^n\Z)^\times$, characterized by $\sigma(\zeta)= \zeta^{\kappa(\sigma)}$.
+\begin{parts}
+\part Show that for all $i \in (\Z/p^n\Z)^{\times}$, $\frac{1-\zeta^i}{1-\zeta}$
+is a \textit{unit} in $\mc{O}_K$. Conclude that $v_K(p)=p^{n-1}(p-1)v_K(1-\zeta)$ (hint: evaluate the $p^n$ cyclotomic polynomial at 1).
+\part Deduce that $\kappa$ is in fact an isomorphism, and that $1-\zeta$ is a uniformizer of $\mc{O}_K$.
+\part Compute the lower ramification groups $G(K/\Q_p)_i$. (Hint: the previous part implies $\mc{O}_K= \Z_p[\zeta]$.) Compute the different $\mc{D}_{K/\Q_p}$.
+\end{parts}
+
+\question Let $K= \Q_2[ \sqrt{-1}, \sqrt{2}]$. Find a uniformizer for $K$, and
+compute the lower ramification groups and different of $K/\Q_2$.
+
+\question Let $(K, v)$ be a complete discretely valued non-archimedean field  (normalize so that
+$v(K \setminus 0))= \Z$). Recall that a polynomial $f(X)= X^n +a_{n-1} X^{n-1} + \ldots + a_0$ is
+Eisenstein if $v(a_i) >0$ for all $i$, and $v(a_0)=1$.
+
+\begin{parts}
+\part Let $f(X)$ be Eisenstein. Show that $f(X)$ is irreducible, and that $K[X]/ (f(X))$ is a
+totally ramified extension of $K$.
+\part Conversely, show that every totally ramified extension (of finite degree) of $K$ is obtained
+by adjoining the root of an Eisenstein polynomial.
+\end{parts}
+
+\question (Krasner's Lemma) Let $(K, v)$ be a complete discretely valued field.
+Assume all polynomials and field extensions that show up in this exercise are separable (eg, you could take $K$ to have characteristic zero).
+\begin{parts}
+\item Let $L/K$ be a finite Galois extension containing elements $\alpha$ and $\beta$. If 
+\[
+v(\alpha-\sigma(\alpha)) < v(\beta-\alpha)
+\]
+for all $\sigma \in G(L/K) \setminus G(L/K(\alpha))$, show that $\alpha \in K(\beta)$. (The hypothesis says: ``$\beta$ is closer to $\alpha$ than $\alpha$ is to any of its conjugates.'')
+\item Define a valuation on $K[X]$ by $v(\sum a_n X^n)= \min(v(a_n))$. Fix a degree $d$ irreducible monic polynomial $f(X)$. Show that there is a constant $c$ such that for any other degree $d$ monic polynomial $g$, $v(f-g)>c$ implies that $g$ is also irreducible, and $K[X]/(g) \cong K[X]/(f)$.
+\item Let $K$ be a non-archimedean local field of characteristic zero. Show that in a fixed algebraic closure $\overline{K}$ of $K$, there are only finitely many extensions of bounded degree. (Hint: reduce to the case of totally ramified extensions; then use the previous exercise, showing that all totally ramified extensions come from adjoining roots of Eisenstein polynomials; finiteness follows from a compactness argument and Krasner's Lemma.) Remind yourself that the conclusion of this exercise is false for global fields!
+\end{parts}
+
+\question Classify quadratic extensions of $\Q_p$, for all primes $p$.
+\end{questions}
+
+\section{Basics of global fields}
+\begin{enumerate}
+\item Let $K$ be a number field. Refine the weak approximation theorem as follows: if $S$ is a finite set of finite places of $K$, if $\alpha_v \in K_v$ is given for all $v \in S$, and if $\varepsilon > 0$, then there exists an $\alpha \in K$ such that $|\alpha-\alpha_v|_v < \varepsilon$ for all $v \in S$ and $|\alpha|_v \leq 1$ for all finite places $v \not \in S$ (i.e., $\alpha$ can be chosen to be integral away from $S$).
+\item Let $K$ be a number field, and equip $\adele_K$ and $\idele_K$ with their restricted direct product topologies. \begin{enumerate}
+\item Show that the topology on $\idele_K$ is not the subspace topology for the inclusion $\idele_K \subset \prod_v K_v^{\times}$ (the latter with the usual direct product topology). 
+\item Show that the topology on $\idele_K$ is not the subspace topology for the inclusion $\idele_K \subset \adele_K$. 
+\item Show that the topology on $\idele_K$ is the natural colimit topology on $\bigcup_S {\idele_K}^S$ (i.e., a set in the union is open if and only if its intersection with each ${\idele_K}^S$ is open).
+\item Show that the topology on $\idele_K$ is the subspace topology for the inclusion $\idele_K \xrightarrow{x \mapsto (x, x^{-1})} \adele_K \times \adele_K$.
+\end{enumerate}
+\item Let $K$ be a number field, and set $n= [K:\Q]$. Recall the Minkowski bound: for every element of the class group of $K$, there is a representative ideal $I$ whose norm satisfies
+\[
+N(I) \leq \frac{n!}{n^n} \left( \frac{4}{\pi} \right)^s D_K^{1/2},
+\]
+where $s$ is the number of complex places of $K$, and $D_K$ is the (absolute) discriminant of $K$. 
+\begin{enumerate}
+\item Compute the class groups of $K=\Q(\sqrt{-5})$ and $L=\Q(\sqrt{-31})$.
+\item Show that $K(\sqrt{-1})$ and $L(\alpha)$, where $\alpha$ satisfies $\alpha^3+\alpha+1=0$, are everywhere unramified extensions of $K$ and $L$, respectively (hint for $L$: what is the discriminant of a cubic polynomial?). They are in fact the maximal abelian unramified extensions, and it is part of class field theory (the theory of the Hilbert class field) that the Galois groups of these extensions are isomorphic to the respective class groups.
+\end{enumerate}
+\item Let $K$ be a number field. Show there exists a finite extension $L/K$ such that all ideals of $K$ become principal in $L$. (Hint: for every ideal $I$ of $K$, $I^{h_K}$ is principal.) This is a soft statement; again, the theory of the Hilbert class field will yield something sharper.
+\item A number field $K$ is said to be \textit{totally real} if all of its archimedean places are real, i.e. all embeddings $K \into \CC$ actually land in $\RR$. A number field is said to be \textit{CM} (``complex multiplication'') if it is a totally imaginary quadratic extension of a totally real field. 
+\begin{enumerate}
+\item Show that the CM number fields are precisely the totally imaginary number fields on which complex conjugation is well-defined, i.e. complex conjugation on $\CC$ induces an automorphism of $K$ for each choice of embedding $K \into \CC$, and this automorphism is independent of the choice of embedding.
+\item Give an example of a number field that is neither CM nor totally real.
+\item Let $K/F$ be a quadratic CM extension of a totally real field $F$. Show that $\mc{O}_K^\times$ and $\mc{O}_F^\times$ have the same rank. Show that the index $[\mc{O}_K^\times: \mu_{\infty}(K) \mc{O}_F^\times]$ is either 1 or 2. (Hint: $\varepsilon \mapsto \varepsilon/\bar{\varepsilon}$ defines a homomorphism $\mc{O}_K^\times \to \mu_{\infty}(K)$; show this induces an inclusion $\mc{O}_K^\times/(\mu_{\infty}(K) \mc{O}_F^\times) \into \mu_{\infty}(K)/\mu_{\infty}(K)^2$.)
+\end{enumerate}
+\item Let $K/\Q$ be a finite Galois extension, and let $\sigma_0, \ldots, \sigma_{r}$ be a set of representatives of embeddings $K \into \CC$ modulo complex conjugation. Use the following outline to show that there exists a unit $\varepsilon$ of $\mc{O}_K$ such that the conjugates $\{\sigma_i(\varepsilon)\}_{i=1, \ldots, r}$ generate a finite-index subgroup of $\mc{O}_K^{\times}$ (such an $\varepsilon$ is called a Minkowski unit).
+\begin{enumerate}
+\item Assume for the time being that we can construct a unity $\varepsilon$ such that $|\sigma_0(\varepsilon)|>1$ but $|\sigma_i(\varepsilon)|<1$ for all $i>0$. Regard $K$ as a subfield of $\CC$ via $\sigma_0$, so we can think of the $\sigma_i$ as elements of $\Gal(K/\Q)$. It suffices to show the regulator of $\sigma_1(\varepsilon), \ldots, \sigma_r(\varepsilon)$ is non-zero (recall that the regulator of $t_1, \ldots, t_r$ is $|\det(\log|\sigma_i(t_j)|)|$). The matrix $(a_{ij})_{i, j=1, \ldots, r}$ with entries $a_{ij}= \log|\sigma_i^{-1}\sigma_j(\varepsilon)|$ then has $a_{ii}>0$, $a_{ij}\leq0$ for all $i \neq j$, and $\sum_i a_{ij} >0$ for all $j$. Conclude by showing that any real matrix satisfying these three properties has non-zero determinant.
+\item Now we show that a unit $\varepsilon$ as in the last part exists. Recall that the unit theorem shows that injective homomorphism $\mc{O}_K^\times/\mu_{\infty}(K) \to \RR^r$ given by
+\[
+ \log(x)= (\log|\sigma_i(x)|)_{i=1, \ldots, r}
+\]
+has image equal to a lattice (of rank $r$) in $\RR^r$. As such, the image must intersect the ``quadrant'' ($2^r$-ant?) where all coordinates are negative. Take such an $\varepsilon$ in this image. By construction, $\log|\sigma_i(\varepsilon)| <0$ for $i=1, \ldots, r$; and then necessarily $\log|\sigma_0(\varepsilon)|>0$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Group and Galois cohomology}
+All modules for a profinite group are implicitly discrete, unless otherwise specified.
+\begin{enumerate}
+\item (Cohomology of pro-cyclic groups) Let $G= \widehat{\Z}$ (the profinite completion of $\Z$), and let $F$ be a (topological) generator of $G$. Show that for any torsion $G$-module $M$, $H^1(G, M) \cong M/(F-1)M$. Show that $H^i(G, M)=0$ for $i \geq 2$. (We will use this result frequently, as the case $G= \Gal(\overline{\mathbb{F}}_q/\mathbb{F}_q)$ will often show up for us.)
+\item Recall that $H^0$ and $H^1$ admit concrete group-theoretic interpretations. In this important exercise, we show that $H^2$ does as well. Let $G$ be a profinite group, and let $M$ be a (for simplicity) finite $G$-module. Consider the set of extensions (of profinite groups)
+\[
+ 1 \to M \to E \to G \to 1,
+\]
+where $M$ is a normal subgroup of $E$ such that the given $G$-action on $M$ agrees with the $G$-action induced by $E$-conjugation (i.e., lift $g\in G$ to $E$ and allow it to act on $M$ by conjugation--this action is well-defined since $M$ is abelian). Regard two extensions $E$ and $E'$ as equivalent if there is an isomorphism $E \xrightarrow{\sim} E'$ inducing the identity on $M$ and $G$. Denote by $\Ext(G, M)$ the set of such equivalence classes.
+\begin{enumerate}
+\item Show that there is a natural isomorphism $\Ext(G, M) \cong H^2(G, M)$. Hint: given $\phi \in Z^2(G, M)$, let $E= M \times G$ as a set, and endow it with the group law $(m, g)\cdot (m', g')= (m+g(m')+\phi(g, g'), gg')$. Conversely, given an extension, fix a continuous section (not a group homomorphism) of $E \to G$ (we showed existence in class), and use it to reverse the previous step.
+\item Verify that the trivial element of $H^2(G, M)$ corresponds to the semi-direct product $M \rtimes G$.
+\item Supposed we have an extension $E$ corresponding to a cohomology class $\phi_E$. If $f \colon H \to G$ is a homomorphism of profinite groups, show that $f$ lifts to $E$ if and only if $f^*(\phi_E)=0$.
+\item Classically, the cohomology group $H^2(G, \CC^\times)$ is known as the Schur multiplier. Explain the connection between the Schur multiplier and obstructions to lifting projective representations $G \to \mr{PGL}_n(\CC)$ to honest representations $G \to \mr{GL}_n(\CC)$. (Note: $H^2(G, \CC^\times)= H^2(G, \mu_{\infty}(\CC)) \cong \varinjlim_n H^2(G, \frac{1}{n}\Z/\Z)$.)
+\item Exhibit a finite group with a non-trivial Schur multiplier and a corresponding projective representation that does not lift to an honest representation.
+\end{enumerate}
+\item Compute $H^2(\Z/p, \Z/p)$ for any prime $p$. Reconcile this calculation with the previous exercise and your knowledge of groups of order $p^2$. Do the same for $H^2(\Z/p \times \Z/p, \Z/p)$ and groups of order $p^3$. For the latter, you may assume the K\"{u}nneth formula (see exercise 5).
+\item (An alternative description of group cohomology)
+\begin{enumerate}
+\item Let $\mc{A}$ be an abelian category. For any object $M$ of $\mc{A}$, the (covariant) functor $\Hom(M, \bullet)$ is left-exact. If $\mc{A}$ has enough injectives, this lets us define the derived functors $\Ext^i(M, \bullet)$. Similarly, for any $N \in \mc{A}$, $\Hom(\bullet, N)$ is a (contravariant) left-exact functor, and if $\mc{A}$ has enough projectives, we can define its derived functors $\Ext^i(\bullet, N)$. Assume $\mc{A}$ does have enough injectives and projectives, and check that the two resulting definitions of $\Ext^i(M, N)$ agree.
+\item If $G$ is profinite, and $M$ is a discrete $G$-module, then $M^G= \Hom_G(\Z, M)$, so $H^i(G, M)= \Ext^i_G(\Z, M)$ (the $\Ext$ is taken in the category of discrete $G$-modules).
+\item If $G$ is finite (or more generally, discrete), then the category of $\Z[G]$-modules has enough projectives, so we can also define $H^i(G, M)$ as the $i^{th}$ cohomology group of the complex $\Hom_{\Z[G]}(P_{\bullet}, M)$, where $P_{\bullet}$ is any projective resolution of $\Z$.
+\end{enumerate}
+\item (Another description of group cohomology) Let $G$ be a discrete group, and let $M$ be a $\Z[G]$-module. One can also define $H^i(G, M)= H^i(BG, \mc{M})$, where $BG$ is a $K(G, 1)$, and in the second group $M$ is regarded as the local system on $BG$ associated to the $G= \pi_1(BG, \ast)$-module $M$. (Note: there are a few ways to define cohomology with coefficients in a local system: one can take sheaf cohomology in the usual sense, or, better for purposes of this exercise, the following. Let $X$ be a reasonable topological space with fundamental group $\Pi$. Let $\Pi \to \Aut(M)$ be a local system on $X$, and let $X' \to X$ be a Galois covering space trivializing $M$, with $\Pi' \unlhd \Pi$. Then the homologies of the complexes $C_{\bullet}(X') \otimes_{\Z[\Pi/\Pi']} M$ and $\Hom_{\Z[\Pi/\Pi']}(C_{\bullet}(X'), M)$ give the homology and cohomology groups of $X$ with coefficients in $M$. Here we write $C_{\bullet}$ for singular chains.) This exercise elaborates on this connection.
+\begin{enumerate}
+\item Let $EG \to BG$ be the universal cover of $BG$. The singular chain complex $C_{\bullet}(EG)$ (with integer coefficients) is a free ($\Z[G]$-module) resolution of $\Z$. 
+\item The cohomology of $\Hom_G(C_{\bullet}(EG), M)$ computes both $H^i(G, M)$ and $H^i(BG, M)$.
+\item Realizing $EG$ as a simplicial complex with one $n$-simplex $[g_0, \ldots, g_n]$ for each tuple $(g_0, \ldots, g_n) \in G^{n+1}$ and $G$-action carrying $[g_0, \ldots, g_n]$ isomorphically to $[gg_0, \ldots, gg_n]$ (see Hatcher I.B.7), $H^i(BG, M)$ is also the cohomology of $\Hom_G(C^{\Delta}_{\bullet}(EG), M)$, $C^{\Delta}_{\bullet}$ denoting the simplicial chain complex; we recover (and provide the best conceptual explanation for) the description of $H^\bullet(G, M)$ as the cohomology of the cochain complex whose degree $n$ term is the inhomogeneous cochains $G^n \to M$, with the funny (but now explained) boundary map given in class.
+\item Now many of the constructions we carried out in class can be explained in terms of algebraic topology: construct restriction, corestriction, and inflation maps from this perspective. Construct the ``Hochschild-Serre'' spectral sequence of group cohomology from the Serre spectral sequence of the fibration $BG \to B(G/H)$.
+\end{enumerate}
+\item Let $G$ be a profinite group, and let $H$ be an open subgroup of $G$. Fix a section $t \colon H \backslash G \to G$. Define a map $V \colon G \to H^{\mr{ab}}$ (the abelianization of $H$) by
+\[
+V(g)= \prod_{H \backslash G \ni x} t(x)gt(xg)^{-1}.
+\]
+\begin{enumerate}
+\item Show $V$ is independent of the choice of section $t$.
+\item Show that $V$ is a group homomorphism, and therefore factors $V \colon G^{\mr{ab}} \to H^{\mr{ab}}$. This is called the \textit{transfer} (``V'' is for \textit{Verlagerungen}).
+\item Show that $(G^{\mr{ab}})^\vee \cong H^2(G, \Z)$.
+\item Via the above isomorphism, the transfer identifies to the dual of the corestriction map 
+\[
+\mr{cor} \colon H^2(H, \Z) \to H^2(G, \Z).
+\]
+(Hint: we gave an alternative description of corestriction as the composite
+\[
+H^i(H, M) \xrightarrow{\sim} H^i(G, \Ind_H^G M) \xrightarrow{\tr} H^i(G, M).)
+\]
+\end{enumerate}
+\item (See Serre, \textit{Topics in Galois Theory}) A natural question in (inverse) Galois theory is, given a field $K$, a surjection of (finite) groups $G \to H$, and a Galois extension $L/K$ such that $\Gal(L/K) \cong H$, does there exist a Galois extension $M/L/K$ such that the surjection $\Gal(M/K) \to \Gal(L/K)$ can be identified with $G \to H$? This is known as the embedding problem. This exercise will show how even the simplest cases of the embedding problem depend on subtle arithmetic properties of the field $K$. Assume $\mr{char}(K) \neq 2$, and let $K(\sqrt{\alpha})$ be a quadratic extension of $K$ ($\alpha \in K$). We will show that $K(\sqrt{\alpha})$ can be embedded in a cyclic degree four extension $L/K$ if and only if $\alpha$ is a sum of two squares in $K$.
+\begin{enumerate}
+\item Let $G$ be a (finite) group equipped with a surjection $\epsilon \colon G \to \Z/2$. Let $H= \ker(\epsilon)$, and suppose we are also given a homomorphism $\chi \colon H \to \Z/2$, with kernel $H_{\chi}$. Show that the following are equivalent: (a) $H_{\chi}$ is normal in $G$, and $G/H_{\chi}$ is cyclic of order 4; (b) $\mr{cor}(\chi)= \epsilon$. (Use that corestriction is the dual of the transfer, which can be computed explicitly.) 
+\item Let $L= K(\sqrt{\alpha}, \sqrt{a+b \sqrt{\alpha}})$ for some $a, b \in K$. Use the previous part to show that $L/K$ is cyclic of degree 4 if and only if $a^2-\alpha b^2= \alpha c^2$ for some $ c\in K^\times$.
+\item If $a^2-\alpha b^2= \alpha c^2$ and $b^2+c^2 \neq 0$, observe that 
+\[
+ \alpha= \left( \frac{ab}{b^2+c^2} \right)^2 + \left( \frac{ac}{b^2+c^2} \right)^2.
+\]
+Use this (and a similar algebraic manipulation for the converse) to finish the problem.
+\end{enumerate}
+\end{enumerate}
+\section{Local Class Field Theory}
+\begin{enumerate}
+\item Let $K$ be a finite extension of $\Q_p$. What is the maximal abelian tamely ramified extension of $K$ (give generators for the field)? What is the maximal abelian totally tamely ramified extension of $K$? What norm subgroup does this correspond to under the correspondence of local class field theory?
+\item Let $K$ be a finite extension of $\Q_p$. Assume that $K$ contains a primitive $n^{th}$ root of 1. Define the Hilbert symbol
+\[
+(\cdot, \cdot)_n \colon K^\times/K^{\times n} \times K^\times/K^{\times n} \to \mu_n
+\]
+by $(a, b)_n= \mr{inv}_K(\delta(a) \cup \delta(b))$, where $\delta$ is the Kummer theory boundary map, and, to be precise, by $\mr{inv}_K$ here we mean the isomorphism $H^2(G_K, \mu_n \otimes \mu_n) \xrightarrow{\sim} \mu_n$ induced by the usual invariant map. (An aside: note that $(\cdot, \cdot)_n$ factors through Milnor K-theory.)
+\begin{enumerate}
+\item Show $(a, b)_n=1$ if and only if $b$ is a norm from $K[\sqrt[n]{a}]$.
+\item Show that the Hilbert symbol can be computed in terms of the reciprocity map $r_K$ via
+\[
+r_K(b)(a^{1/n})= (a, b)_n a^{1/n}.
+\]
+\item Take $n= \# \mu_{\infty}(K)$, and assume that $n$ is coprime to the residue characteristic $p$ of $K$. This assumption implies that reduction to the residue field $k$ gives an isomorphism $\mu_n(K) \xrightarrow{\sim} \mu_n(k)$ (in contrast, note, eg, that if $K= \Q_p(\zeta_p)$, then $\zeta_p=1 + (\zeta_p-1)$ is in the kernel of reduction). Show that
+\[
+(a, b)_n= (-1)^{v(a)v(b)} \frac{b^{v(a)}}{a^{v(b)}},
+\]
+where $v$ is the normalized valuation on $K$, and the right-hand side is to be interpreted as the Teichmuller lift of its image in $k$. (Hint: use bilinearity and skew-symmetry to reduce to checking a few basic cases. Note that the calculation of $(u, \varpi)_n$ for $u \in \mc{O}_K^{\times}$ depends on our normalization of local class field theory: in class, and here, we take uniformizers to geometric frobenii. To compute $(\varpi, \varpi)_n$, rewrite it as $(-1, \varpi)_n(-\varpi, \varpi)_n$, and use parts (a) and (b) to evaluate each of these factors.)
+\item Similarly define $(a, b)_2$ for $K= \RR$. Compute it explicitly.
+\end{enumerate}
+\item Let $K$ be a finite extension of $\Q_p$. For all primes $\ell$, and all integers $r$, compute the Galois cohomology groups $H^2(G_K, \Q_{\ell}/\Z_{\ell}(r))$. (For any Galois module $M$, we write $M(r)$ for its twist by the $r^{th}$ power of the cyclotomic character; for example, $\Q/\Z(1)= \mu_{\infty}$.)
+\item Use the previous exercise (the case $r=0$) to show that any (continuous) projective representation $G_K \to \mr{PGL}_n(\CC)$ lifts to a genuine representation $G_K \to \mr{GL}_n(\CC)$.
+\item 
+\begin{enumerate}
+\item Compute $H^1(G_{\Q_p}, \Z/p^n)$ (as an abstract group) for all $n$. What is the image of the reduction map
+\[
+H^1(G_{\Q_p}, \Z/p^{n+1}) \to H^1(G_{\Q_p}, \Z/p^n)?
+\]
+\item The natural maps 
+\[
+H^1(G_{\Q_p}, \Z_p) \to \varprojlim_n H^1(G_{\Q_p}, \Z/p^n)
+\] 
+and
+\[
+H^1(G_{\Q_p}, \Z_p) \otimes_{\Z_p} \Q_p \to H^1(G_{\Q_p}, \Q_p)
+\]
+are isomorphisms (these groups with $p$-adic coefficients are defined via continuous cochains; you may assume these isomorphisms, or prove them if you like). Use the last part to compute (as an abstract $\Q_p$ vector space) $H^1(G_{\Q_p}, \Q_p)$.
+\item For any continuous representation of $G_{K}$ (here $K$ can be any field) on a $\Q_p$-vector space $V$, show that $H^1(G_K, V)$ (again defined via continuous cocycles) is in bijection with isomorphism classes of extensions
+\[
+0 \to V \to E \to \Q_p \to 0
+\]
+of (continuous) $\Q_p$-representations of $G_K$.
+\item Construct explicit homomorphisms $G_{\Q_p} \to \mr{GL}_2(\Q_p)$ that, under the correspondence of part (c), give a basis of $H^1(G_{\Q_p}, \Q_p)$.
+\end{enumerate}
+\item (Norm Limitation Theorem) Let $L/K/\Q_p$ be finite extensions. Let $M$ be the largest abelian extension of $K$ contained in $L$. Show that $N_{L/K}(L^\times)= N_{M/K}(M^{\times})$. Thus, local class field theory gives us little direct information about non-abelian extensions of local fields.
+\item \label{Ver} Recall that in problem (6) of the Group Cohomology assignment, we defined the transfer morphism $V \colon G^{\mr{ab}} \to H^{\mr{ab}}$ for any open subgroup $H$ of a profinite group $G$. Establish the following compatibility property of the reciprocity maps of local clas field theory: the diagram
+\[
+ \xymatrix{
+K^\times \ar[r]^{r_K} \ar[d] & G_K^{\mr{ab}}\ar[d]^V \\
+L^\times \ar[r]^{r_L} & G_L^{\mr{ab}}
+}
+\]
+commutes for any finite extension $L/K$.
+\end{enumerate}
+\section{Global Class Field Theory}
+Many of these problems are based on the exercises Tate wrote for the Cassels-Fr\"{o}hlich volume; you'll find more problems, and extensions of some of these problems, there as well.
+\begin{enumerate}
+ \item (Apropos of the Grunwald-Wang theorem) 
+\begin{enumerate} 
+\item Show that 16 is an $8^{th}$ power in $\Q_v$ for all $v \neq 2$. (Hint: Show that $\Q(\sqrt{-1}, \sqrt{2})/\Q$ is unramified at all odd primes $p$, and deduce that for all such $p$, one of $1+\sqrt{-1}$, $\sqrt{2}$, or $\sqrt{-2}$ lies in $\Q_p$.) That 16 is not an $8^{th}$ power in $\Q$ has been known for thousands of years.
+\item Show that 16 is an $8^{th}$ power everywhere locally in $\Q(\sqrt{7})$, but not an $8^{th}$ power globally.
+\item Relate the previous two counter-examples to the statement of the Grunwald-Wang theorem.
+\end{enumerate} 
+\item (Local norms not global norms)
+\begin{enumerate}
+\item Let $L/K$ be a finite \textit{cyclic} extension of number fields. Show that $a \in K$ lies in $N_{L/K}(L)$ if and only if for each place $w$ of $L$, $a$ lies in $N_{L_w/K_{w|_K}}(L_w)$. (Hint: consider the map $H^2(G(L/K), L^{\times}) \to H^2(G(L/K), \mathbb{A}_L^{\times})$.)
+\item Let $L= \Q(\sqrt{13}, \sqrt{17})$. Show that $5^2$ is not a norm for $L/\Q$, but that it is a norm for $L_w/\Q_{w|_{\Q}}$ for all places $w$ of $L$.
+\end{enumerate}
+\item Recall that the Hilbert class field $H_K$ of a number field $K$ is the maximal abelian extension of $K$ that is unramfied at all finite places of $K$ and split completely at all infinite places (that is, above every real place of $K$, $H_K$ has only real places). If we remove the archimedean condition, the resulting field $H'_K$ is called the ``narrow'' Hilbert class field.
+\begin{enumerate}
+\item Which open subgroups of $C_K$ correspond under global class field theory to $H_K$ and $H'_K$?  
+\item Let $K= \Q(\sqrt{3})$. Compute $H_K$ and $H'_K$.
+\item Recall the fields $K= \Q(\sqrt{-5})$ and $L= \Q(\sqrt{-31})$ from ``Basics of Global Fields.'' From your earlier work, you can now complete the description of $H_K$ and $H_L$.
+\item For general $K$, describe the set of primes of $K$ that split completely in $H_K/K$.
+\item Show that every ideal in $K$ becomes principal in $H_K$, assuming the following (tricky!) result in finite group theory: if $G$ is a finite group and $H=[G, G]$ its commutator subgroup, then the transfer map $V \colon G^{\mr{ab}} \to H^{\mr{ab}}$ is trivial. (First globalize exercise \ref{Ver} from ``Local Class Field Theory.'')
+\end{enumerate}
+\item (Ray class fields and ``classical'' class field theory) Let $\mathfrak{n}$ be a non-zero ideal of $\mc{O}_K$, with support $S(\mf{n})$, and for any finite set of (finite) primes $S$ of $K$, let $I_K^{S}= I^{S}$ denote the subgroup of ideals generated by the primes not in $S$. Let $K_{\mf{n}, 1}$ denote the set of elements $\alpha \in K^{\times}$ such that $v(\alpha-1) \geq v(\mf{n})$ for all $v \vert \mf{n}$ (here $v$ abusively denotes both the normalized valuation and the corresponding prime ideal).
+\begin{enumerate}
+\item Show that the divisor map $K^{\times} \to I_K$ induces a map $K_{\mf{n}, 1} \to I_K^{S(\mf{n})}$. Show that $K_{\mf{n}, 1}$ can alternatively be described as the set of all quotients $\alpha/\beta \in K^{\times}$ with $\alpha, \beta \in \mc{O}_K$, $\alpha-\beta \in \mf{n}$, and $(\alpha)+\mf{n}= (\beta)+\mf{n}= \mc{O}_K$. (Hint: check that every ideal class of $K$ can be represented by an integral ideal in $I_K^S$, for any finite set $S$.)
+\item The quotient $\mr{Cl}_{\mf{n}}(K)= I_K^{S(\mf{n})}/K_{\mf{n}, 1}$ is known as the ray class group of conductor $\mf{n}$. Show that
+\[
+ \mr{Cl}_{\mf{n}}(K) \cong \mathbb{A}_K^{\times}/(K^{\times}K_{\infty}^{\times}U(\mf{n})),
+\]
+where $U(\mf{n})$ is the subgroup of $\prod_{v \not \vert \infty} \mc{O}_{v}^{\times}$ consisting of elements congruent to 1 modulo $\mf{n}$.
+\item A finite abelian extension $L/K$ is said to have conductor dividing $\mf{n}$ if for all finite places $w \vert v$ of $L/K$, the local reciprocity map $K_v^{\times} \to \Gal(L_w/K_v)$ vanishes on the subgroup of $\mc{O}_v^{\times}$ of elements congruent to 1 modulo $\mf{n}$ (i.e. $1+ \mf{p}_v^{v(\mf{n})}$). Show that there is a \textit{maximal} abelian extension $H_{\mf{n}}/K$ of conductor $I$ in which all infinite places split completely, and show that the reciprocity map induces an isomorphism $\mr{Cl}_{\mf{n}}(K) \xrightarrow{\sim} \Gal(H_{\mf{n}}/K)$.
+\item When $K= \Q$ and $\mf{n}=n$, compute the ray class field $H_n/\Q$.
+\end{enumerate}
+\item (Wait to do this problem until we have discussed the \v{C}ebotarev density theorem.) Let $L/K$ be a finite extension of number fields, not necessarily Galois. Let $S$ be a finite (or more generally density zero) set of primes of $K$. Denote by $\Spl_S(L/K)$ the set of primes $v \not \in S$ such that $v$ splits completely in $L$, and by $\Spl'_S(L/K)$ the set of primes $v \not \in S$ such that $v$ has a split factor in $L$ (the two sets are equal if $L/K$ is Galois).
+\begin{enumerate}
+\item When $L/K$ is Galois, what is the (Dirichlet) density of $\Spl_S(L/K)$?
+\item A (not necessarily abelian) Galois extension $L/K$ is determined by the set $\Spl_S(L/K)$! More precisely, if $L$ and $M$ are Galois over $K$, then 
+\[
+ L \subset M \iff \Spl_S(M) \subset \Spl_S(L).
+\]
+(Hint: check that $\Spl_S(LM/K)= \Spl_S(L/K) \cap \Spl_S(M/K)$, and then use the previous part.)
+\item If a polynomial $f(X) \in K[X]$ splits into linear factors mod $\mathfrak{p}$ for all but finitely many prime ideals $\mathfrak{p}$ of $K$, then $f$ splits into linear factors in $K$. (Hint: consider the splitting field of $f$.)
+\item (Not an exercise: see Cassels-Fr\"{o}hlich exercise 6.2-6.4 if you want to pursue this) In fact, if an irreducible polynomial $f(X) \in K[X]$ has a root mod $\mathfrak{p}$ for almost all $\mathfrak{p}$, then it has a root in $K$. But in general one has to be very careful with non-Galois extensions in this setting: for instance, the set $\Spl'_S(L/K)$ does not always determine the extension $L/K$, even up to $K$-isomorphism, when $L/K$ is not Galois.
+\end{enumerate}
+\item Complete the detailed outline given in Exercise 4 of Cassels-Fr\"{o}hlich of the proof of the Hasse-Minkowski theorem (stated there as Exercise 4.8).
+\item (Higher-power reciprocity laws) Throughout this exercise fix an integer $n>1$, a number field $K$ containing the $n^{th}$ roots of unity, and let $S$ denote the set of places of $K$ consisting of those dividing $n$ and the archimedean places (the latter will only be relevant in the case $n=2$). For any $a \in K^\times$, let $S(a)$ denote the union of $S$ with the places dividing $a$. Define a pairing
+\[
+K^{\times} \times (\mathbb{A}_K^{S})^\times \to \mu_n(K)
+\]
+by
+\[
+(a, \beta) \mapsto \left( \frac{a}{\beta} \right)= \delta(a)(r_K(\beta))^{-1},
+\]
+where $\delta$ is the Kummer theory boundary map, and $r_K$ is the reciprocity map (normalized so that uniformizers map to geometric Frobenii).
+\begin{enumerate}
+\item If $\beta_v=1$ for all $v \in S(a)$, show that $\left( \frac{a}{\beta} \right)$ depends only on the ideal $\beta \mc{O}_K$ (that is, the ideal whose prime factorization is given by the valuations $v(\beta_v)$ for all $v$). We then write $\left( \frac{a}{\beta \mc{O}_K} \right)$ and can speak of this ``power residue symbol" $\left( \frac{a}{I} \right)$ for any fractional ideal of $K$ supported away from $S(a)$.
+\item Let $I$ be a non-zero integral ideal of $\mc{O}_K$ coprime to $n$, and let $a \in \mc{O}_K$ be coprime to $nI$. Then 
+\[
+\left( \frac{a}{I} \right) \equiv a^{(N(I)-1)/n} \pmod I.
+\]
+(First check the case where $I$ is prime. This is where you have to pay attention to how we have normalized the reciprocity map.) In particular, if $a'$ is another element of $\mc{O}_K$ coprime to $nI$, and $a \equiv a' \pmod I$, then $\left( \frac{a}{I} \right)= \left( \frac{a'}{I} \right)$. Moreover, if $\zeta \in \mu_n(K)$, then taking $a= \zeta$ the above formula holds in $\mc{O}_K$, not only modulo $I$. When $n=2$, $K=\Q$, and $p$ is an odd prime, check that that we recover the Legendre symbol $\left( \frac{a}{p} \right)$ and the formula for $\left( \frac{-1}{p} \right)$. 
+\item We now prove the general power reciprocity law. Recall first from the previous problem set the (local) Hilbert symbol: at a place $v$ of $K$, we will now write $(\cdot, \cdot)_v$ for what was denoted $(\cdot, \cdot)_n$ in the last homework. For all $a, b \in K^\times$, show that
+\[
+\prod_v (a, b)_v =1.
+\]
+(Use part of the local-global sequence for $Br(K)$.)
+\item The power residue law. For $a, b \in K^\times$, define $\left( \frac{a}{b} \right)= \left( \frac{a}{(b)^{S(a)}} \right)$, where $(b)^{S(a)}$ is the ideal generated by $b$ but excluding any prime factors in $S(a)$. Assume that $S(a) \cap S(b)=S$, and show that
+\[
+\left( \frac{a}{b} \right) \left( \frac{b}{a} \right)^{-1} \prod_{v \in S} (b, a)_v= \prod_v (b,a)_v =1.
+\]
+Conclude that
+\[
+\left( \frac{a}{b} \right) \left( \frac{b}{a} \right)^{-1}= \prod_{v \in S} (a, b)_v.
+\]
+\item Finally, check that this recovers quadratic reciprocity by computing $(p, q)_2$ for odd primes $p$ and $q$. (Hint: show that $\Q_2(\sqrt{p})/\Q_2$ is unramified if and only if $p \equiv 1 \pmod 4$; moreover show that if $p \equiv q \equiv 3 \pmod 4$, then the local reciprocity map $r_{\Q_2(\sqrt{p})/\Q_2}$ is non-trivial at $q$.) A somewhat messier calculation also recovers the formula for $\left( \frac{2}{p} \right)$; and more generally we recover all the classical higher reciprocity laws of Gauss and Eisenstein (see Cassels-Fr\"{o}hlich for details).
+\end{enumerate}
+\item Let $d>1$ be a square-free integer such that $d \equiv 1 \pmod 4$, and let $p$ be a prime not dividing $2d$.
+\begin{enumerate}
+\item Show that $p$ can be expressed as $p=x^2+dy^2$ for $x, y \in \Z$ if and only if $p$ splits completely in $H_K/\Q$, where $H_K$ is the Hilbert class field of $K= \Q(\sqrt{-d})$; equivalently, if $p$ splits in $K/\Q$ into a product of (distinct) principal ideals of $\mc{O}_K$. Deduce that the density of such $p$ is $\frac{1}{2h_K}$.
+\item Which integer primes can be expressed in the form $p=x^2+5y^2$ with $x, y \in \Z$?
+\item Now we ask the weaker question of which primes can be expressed in the form $x^2+dy^2$ with $x, y \in \Q$. Show that $p \in N_{\Q(\sqrt{-d})/\Q} \Q(\sqrt{-d})^{\times}$ if and only if 
+\begin{itemize}
+\item $p \in N_{\Q_2(\sqrt{-d})/\Q_2} \Z_2[\sqrt{-d}]^{\times}$;
+\item and $p \in (\Z_{\ell}^{\times})^2$ for all primes $\ell \vert d$;
+\item and $p$ splits in $\Q(\sqrt{-d})/\Q$.
+\end{itemize}
+\item Use the reciprocity theorem to show that in the previous part the condition that $p$ splits in $\Q(\sqrt{-d})$ is implied by the other two conditions. Deduce that the density of primes representable as $x^2+dy^2$ is $\frac{1}{2^{r+1}}$, where $r$ is the number of prime factors of $d$. (In particular, $h_K \geq 2^{r}$.)
+\end{enumerate}
+\end{enumerate}
+
 \end{document}
-
